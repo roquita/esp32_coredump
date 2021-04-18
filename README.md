@@ -10,12 +10,12 @@ python C:/esp41/esp-idf/components/espcoredump/espcoredump.py info_corefile -t b
 ## Coredumps printed on flash
 * On menuconfig set "flash mode" and reserve 1024 bytes of ram.
 * Dumps automatilly will saved in flash.
-### Method 1
+### Method 1 (Not tested)
 * Automatically read partition and analize it.
 ```python
 python C:/esp41/esp-idf/components/espcoredump/espcoredump.py -p COM18 info_corefile build/coredump.elf
 ```
-### Method 2
+### Method 2 
 * Read manually coredump partition, this will generate a txt file that contains coredump text:
 ```python
 python C:/esp41/esp-idf/components/partition_table/parttool.py read_partition  --partition-name=coredump --output "coredump_from_flash.txt"
@@ -26,3 +26,4 @@ python C:/esp41/esp-idf/components/espcoredump/espcoredump.py info_corefile -t r
 ```
 
 Note: Reserve 1024 bytes for coredump runtime purposses. To avoid extra ram comsuption in tasks or interrupts.
+Note: Coredumps in elf format keep more information than bin format.
